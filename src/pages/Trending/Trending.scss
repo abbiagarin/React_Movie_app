@@ -1,0 +1,9 @@
+@use "../../scss/" as *;
+
+.trending {
+  @include grid(
+    $columns: repeat(auto-fill, minmax(130px, 1fr)),
+    $row-gap: 3px,
+    $column-gap: 3px
+  );
+}
