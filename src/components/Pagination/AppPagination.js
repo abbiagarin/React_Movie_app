@@ -1,6 +1,11 @@
 import React from "react";
-import { createTheme, ThemeProvider, colors, Pagination } from "@mui/material";
-import "./AppPagination.scss";
+import {
+  createTheme,
+  ThemeProvider,
+  colors,
+  Pagination,
+  Box,
+} from "@mui/material";
 
 const darkTheme = createTheme({
   palette: {
@@ -11,24 +16,29 @@ const darkTheme = createTheme({
   },
 });
 
-const AppPagination = ({ setPage, numOfPages = 2 }) => {
+
+
+const AppPagination = ({ setPage, numOfPages = 3 }) => {
   const handlePageChange = (page) => {
     setPage(page);
     window.scroll(0, 0);
   };
   return (
-    <div className="page_container">
-      <div className="root">
-        <ThemeProvider theme={darkTheme}>
-          <Pagination
-            variant="outlined"
-            color="primary"
-            count={numOfPages}
-            onChange={(e) => handlePageChange(e.target.textContent)}
-          />
-        </ThemeProvider>
-      </div>
-    </div>
+    <Box
+      justifyContent={"center"}
+      alignItems={"center"}
+      display={"flex"}
+      sx={{ margin: "20px 0" }}
+    >
+      <ThemeProvider theme={darkTheme}>
+        <Pagination
+          variant="outlined"
+          color="primary"
+          count={numOfPages}
+          onChange={(e) => handlePageChange(e.target.textContent)}
+        />
+      </ThemeProvider>
+    </Box>
   );
 };
 

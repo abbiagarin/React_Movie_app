@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./Header.scss";
 import { NavLink, Outlet } from "react-router-dom";
 import logo from "../../assets/logo.PNG";
+import Footer from "../footer/Footer";
 
 const Header = () => {
   const [nav, setNav] = useState(false);
@@ -35,7 +36,10 @@ const Header = () => {
 
       <main>
         <Outlet />
+        <Footer />
       </main>
+
+      
     </>
   );
 };

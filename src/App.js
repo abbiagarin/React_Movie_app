@@ -8,7 +8,7 @@ import Home from "./pages/Home";
 import Trending from "./pages/Trending/Trending";
 import Movies from "./pages/Movies";
 import Series from "./pages/Series";
-
+import NotFound from "./pages/NotFound/NotFound";
 import Header from "./components/header/Header";
 import "./App.scss";
 
@@ -19,12 +19,17 @@ const router = createBrowserRouter(
       <Route path="popularMovies" element={<Trending />} />
       <Route path="tv" element={<Series />} />
       <Route path="movie" element={<Movies />} />
+      <Route path="*" element={<NotFound />} />
     </Route>
   )
 );
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <RouterProvider router={router} />
+    </>
+  );
 }
 
 export default App;

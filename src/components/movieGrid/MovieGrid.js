@@ -15,7 +15,7 @@ const MovieGrid = ({ id, image, title, year, rating }) => {
       <img src={image ? image : unavailable} alt="" className="movie_poster" />
 
       <div className="movie__grid-subTitle text ">
-        <b>{title}</b>
+        <b className="movie__grid-title">{title}</b>
         <b>
           <span onClick={handleFavorite}>
             {favorite ? <MdOutlineFavorite /> : <MdOutlineFavoriteBorder />}
