@@ -10,13 +10,18 @@ import Movies from "./pages/Movies";
 import Series from "./pages/Series";
 import NotFound from "./pages/NotFound/NotFound";
 import Header from "./components/header/Header";
+import TrendingContent from "./pages/Trending/TrendingContent";
 import "./App.scss";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Header />}>
-      <Route index element={<Home />} exact />
-      <Route path="popularMovies" element={<Trending />} />
+      <Route index element={<Home />} />
+
+      <Route path="popularMovies">
+        <Route index element={<Trending />} />
+        <Route path=":id" element={<TrendingContent />} />
+      </Route>
       <Route path="tv" element={<Series />} />
       <Route path="movie" element={<Movies />} />
       <Route path="*" element={<NotFound />} />
