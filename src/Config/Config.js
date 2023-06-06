@@ -1,8 +1,7 @@
 //image sizes for imbd
 export const imgOneNineTwo = (imageUrl) => {
-  return `https://imdb-api.com/API/ResizeImage?apikey=${process.env.REACT_APP_IMDB_API_KEY}&url=${imageUrl}`;
+  return `https://imdb-api.com/API/ResizeImage?apikey=${process.env.REACT_APP_API_KEY}&size=720x1080&url=${imageUrl}`;
 };
-
 
 // contentModal and singleContent
 export const unavailable =
