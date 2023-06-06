@@ -2,7 +2,7 @@
 
 .trending {
   @include grid(
-    $columns: repeat(auto-fill, minmax(140px, 1fr)),
+    $columns: repeat(auto-fill, minmax(145px, 1fr)),
     $row-gap: 3px,
     $column-gap: 3px
   );

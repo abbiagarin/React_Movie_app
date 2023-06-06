@@ -5,59 +5,68 @@ import MovieGrid from "../../components/movieGrid/MovieGrid";
 import AppPagination from "../../components/Pagination/AppPagination";
 import "./Trending.scss";
 import ErrorComponent from "../../components/errors/ErrorComponent";
-
-const pageSize = 27;
+import { NavLink, useOutletContext } from "react-router-dom";
 
 const Trending = () => {
   const [movieTrends, setMovieTrends] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [page, setPage] = useState(1);
+  const [postsPerPage] = useState(27);
+  const [setIsFooter] = useOutletContext();
+
+  const fetchTrends = async () => {
+    try {
+      const { data } = await axios.get(
+        `https://imdb-api.com/en/API/MostPopularMovies/${process.env.REACT_APP_API_KEY}`
+      );
+      setIsFooter(true);
+      // console.log(data);
+      setMovieTrends(data?.items);
+      setIsLoading(false);
+    } catch (error) {
+      setIsError(true);
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
     setIsLoading(true);
-    const fetchTrends = async () => {
-      try {
-        const { data } = await axios.get(
-          `https://imdb-api.com/en/API/MostPopularMovies/${process.env.REACT_APP_MOVIEAPI_KEY}`
-        );
-
-        setMovieTrends(data?.items);
-        setIsLoading(false);
-        console.log(data);
-      } catch (error) {
-        console.log(error);
-        setIsError(true);
-      }
-    };
-
     fetchTrends();
+    // eslint-disable-next-line
   }, [page]);
+
+  const indexOfLastPost = page * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = movieTrends.slice(indexOfFirstPost, indexOfLastPost);
 
   return (
     <>
-      {isLoading ? (
-        <Loading />
-      ) : isError ? (
+      {!isLoading && <Loading />}
+      {isError ? (
         <ErrorComponent />
       ) : (
         <>
           <div className="trending">
-            {movieTrends &&
-              movieTrends
-                .slice((page - 1) * pageSize, page * pageSize)
-                .map((trend) => (
+            {currentPosts &&
+              currentPosts.map((trend, i) => (
+                <NavLink to={`${trend?.id}`} key={i}>
                   <MovieGrid
-                    key={trend?.id}
                     id={trend?.id}
                     image={trend?.image}
                     title={trend?.title}
                     year={trend?.year}
                     rating={trend?.imDbRating}
                   />
-                ))}
+                </NavLink>
+              ))}
           </div>
-          <AppPagination setPage={setPage} />
+          <AppPagination
+            postsPerPage={postsPerPage}
+            totalPosts={movieTrends.length}
+            page={page}
+            setPage={setPage}
+          />
         </>
       )}
     </>
