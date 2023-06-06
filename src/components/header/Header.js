@@ -6,6 +6,7 @@ import Footer from "../footer/Footer";
 
 const Header = () => {
   const [nav, setNav] = useState(false);
+  const [isFooter, setIsFooter] = useState(false);
 
   const fixedNav = () => {
     if (window.scrollY >= 50) {
@@ -35,11 +36,9 @@ const Header = () => {
       </div>
 
       <main>
-        <Outlet />
-        <Footer />
+        <Outlet context={[setIsFooter]} />
+        {isFooter && <Footer />}
       </main>
-
-      
     </>
   );
 };
