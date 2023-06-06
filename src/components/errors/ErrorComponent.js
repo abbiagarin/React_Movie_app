@@ -13,7 +13,7 @@ const ErrorComponent = () => {
       }}
     >
       <h2 style={{ color: "red", fontSize: "2rem" }}>
-        Something went wrong 😭. Try again later!! <br></br>
+        Requested URL Not Found 😭. Try again later!! <br></br>
         <NavLink to="/" style={{ fontSize: "1rem" }}>
           Back to HomePage
         </NavLink>
