@@ -1,44 +1,57 @@
 import React from "react";
-import {
-  createTheme,
-  ThemeProvider,
-  colors,
-  Pagination,
-  Box,
-} from "@mui/material";
+import "./AppPagination.scss";
+import { FiChevronLeft } from "react-icons/fi";
+import { FiChevronRight } from "react-icons/fi";
 
-const darkTheme = createTheme({
-  palette: {
-    mode: "dark",
-    primary: {
-      main: colors.yellow[500],
-    },
-  },
-});
+const AppPagination = ({ postsPerPage, totalPosts, page, setPage }) => {
+  const pageNumbers = [];
 
+  for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
+    pageNumbers.push(i);
+  }
 
-
-const AppPagination = ({ setPage, numOfPages = 3 }) => {
-  const handlePageChange = (page) => {
-    setPage(page);
-    window.scroll(0, 0);
+  const paginate = (pageNumber) => {
+    setPage(pageNumber);
+    window.scrollTo(0, 0);
   };
+
+  const getPrevious = () => {
+    setPage(page - 1);
+    window.scrollTo(0, 0);
+  };
+
+  const getNext = () => {
+    setPage(page + 1);
+    window.scrollTo(0, 0);
+  };
+
   return (
-    <Box
-      justifyContent={"center"}
-      alignItems={"center"}
-      display={"flex"}
-      sx={{ margin: "20px 0" }}
-    >
-      <ThemeProvider theme={darkTheme}>
-        <Pagination
-          variant="outlined"
-          color="primary"
-          count={numOfPages}
-          onChange={(e) => handlePageChange(e.target.textContent)}
-        />
-      </ThemeProvider>
-    </Box>
+    <>
+      <nav className="pagination">
+        <ul className="pagination__item">
+          <FiChevronLeft
+            className={page === 1 ? "disabled" : ""}
+            onClick={() => getPrevious()}
+          />
+          {pageNumbers.map((number, i) => (
+            <li key={i} className="pagination__number">
+              <button
+                onClick={() => paginate(number)}
+                className={number === page ? "active" : ""}
+              >
+                {number}
+              </button>
+            </li>
+          ))}
+          <FiChevronRight
+            className={
+              page === 1 || page === pageNumbers.length ? "disabled" : ""
+            }
+            onClick={() => getNext()}
+          />
+        </ul>
+      </nav>
+    </>
   );
 };
 
