@@ -1,0 +1,13 @@
+@use "../../scss/" as *;
+
+.card {
+  border-radius: 3px;
+  box-shadow: $box-shadow;
+  width: $width;
+  //height: $height;
+
+  &:hover {
+    background-color: $gray;
+    cursor: default;
+  }
+}

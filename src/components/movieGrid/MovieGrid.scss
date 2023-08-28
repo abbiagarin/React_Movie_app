@@ -1,0 +1,90 @@
+@use "../../scss/" as *;
+
+.movie__grid {
+  position: relative;
+  width: $width;
+  height: $height;
+  margin: 1px 0;
+
+  &-title {
+    text-transform: uppercase;
+  }
+
+  .LazyLoad {
+    max-width: $width;
+    opacity: 0;
+    transition: all 1s ease-in-out;
+  }
+
+  .is-visible {
+    opacity: 1;
+  }
+
+  & .img {
+    width: $width;
+    //height: $height;
+    object-fit: cover;
+    border-radius: 3px;
+    background-color: rgba(192, 192, 192, 0.1);
+  }
+
+  &-subTitle {
+    position: absolute;
+    opacity: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 999;
+    width: 100%;
+    padding: 0 5px;
+
+    & b {
+      font-size: 0.7rem;
+      padding: 3px 0;
+      color: $black;
+      cursor: default;
+      @include flex(center, center);
+
+      @include tablet {
+        font-size: 0.9rem;
+      }
+
+      // @include mobile {
+      //   display: block;
+      // }
+
+      & span {
+        display: flex;
+        padding: 0 0.2rem;
+        font-size: inherit;
+        justify-content: center;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  &:hover .text {
+    opacity: 1;
+    transition: 0.5s ease;
+  }
+
+  &:hover .img {
+    opacity: 0.3;
+    transition: 0.5s ease;
+  }
+
+  @include tablet {
+    width: $width;
+    height: $height;
+  }
+
+  @include mobile {
+    width: $width;
+    height: $height;
+  }
+}

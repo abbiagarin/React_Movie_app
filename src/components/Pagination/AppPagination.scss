@@ -1,0 +1,46 @@
+@use "../../scss/" as *;
+
+.pagination {
+  @include flex(center, center);
+
+  &__item {
+    @include flex(center, center);
+    cursor: pointer;
+
+    flex-wrap: wrap;
+  }
+
+  &__number {
+    padding: 6px 6px;
+    margin: 6px 3px;
+
+    & button {
+      min-width: 32px;
+      height: 32px;
+      border-radius: 16px;
+      text-align: center;
+      vertical-align: middle;
+      background-color: transparent;
+      color: $white;
+      border: 1px solid rgba(255, 255, 255, 0.23);
+      cursor: pointer;
+      font-family: $pagination-font;
+      font-size: 0.87rem;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.23);
+      }
+
+      &.active {
+        background-color: rgba(215, 215, 0, 0.24);
+        border: 1px solid rgba(215, 215, 0, 0.5);
+        color: rgba(215, 215, 0);
+        font-size: 600;
+      }
+    }
+  }
+}
+
+.disabled {
+  display: none;
+}

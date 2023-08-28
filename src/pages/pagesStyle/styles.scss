@@ -1,0 +1,12 @@
+@use "../../scss/" as *;
+
+.trending {
+  @include grid(
+    $columns: repeat(auto-fill, minmax(150px, 1fr)),
+    $row-gap: 3px,
+    $column-gap: 3px
+  );
+  @include mobile {
+    @include grid($columns: repeat(auto-fill, minmax(120px, 1fr)));
+  }
+}

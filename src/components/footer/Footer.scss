@@ -1,0 +1,35 @@
+@use "../../scss/" as *;
+
+.footer {
+  position: relative;
+  bottom: 0;
+  padding: 1.5rem 2rem;
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: -2;
+
+  &__content {
+    max-width: 1000px;
+    margin: 0 auto;
+
+    &__menus {
+      @include grid($columns: repeat(3, 1fr));
+
+      @include mobile {
+        @include grid($columns: repeat(2, 1fr));
+      }
+    }
+
+    &__menu {
+      @include flex(center, space-between);
+      flex-direction: column;
+      margin-top: 1rem;
+      font-weight: 600;
+
+      & > * {
+        margin-top: 1rem;
+      }
+    }
+  }
+}

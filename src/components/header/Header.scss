@@ -1,0 +1,98 @@
+@use "../../scss/" as *;
+
+.movie_logo {
+  width: 5rem;
+  margin-right: 0.6rem;
+
+  @include mobile {
+    width: 5rem;
+  }
+}
+
+.header {
+  height: $header-height;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+  transition: height 0.3s ease, background-color 0.3s ease;
+
+  &__wrap {
+    @include flex(center, space-between);
+    height: 100%;
+    padding: 0 3rem;
+
+    @include mobile {
+      justify-content: center;
+    }
+  }
+
+  &__nav {
+    @include flex(center, center);
+
+    & > * {
+      margin-left: 2rem;
+    }
+
+    & a {
+      padding: 5px 0;
+      font-weight: 700;
+      position: relative;
+      font-size: 1rem;
+      transition: all 0.5s ease-out;
+
+      &.active {
+        color: $main-color;
+
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          width: 0;
+          height: 2px;
+          background-color: $main-color;
+          transform: translateX(-50%);
+        }
+
+        &.active::after,
+        &:hover::after {
+          width: 100%;
+          transition: all 0.5s ease-out;
+        }
+      }
+    }
+
+    @include mobile {
+      width: 100%;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      height: 5rem;
+      background-color: $body-bg;
+      padding: 0 2rem;
+
+      @include flex(center, space-between);
+
+      & > * {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+.sticky {
+  height: $header-height;
+  background-color: $black-transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: height 0.3s ease, background-color 0.3s ease;
+  z-index: 99;
+}
+
+main {
+  margin-top: 100px;
+}

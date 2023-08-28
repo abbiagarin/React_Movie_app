@@ -1,0 +1,65 @@
+@use "./scss/" as *;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+html {
+  font-size: 100%;
+  overflow-y: scroll;
+
+  @include mobile {
+    font-size: 60%;
+  }
+
+  @include tablet {
+    font-size: 80%;
+  }
+}
+
+body {
+  font-family: $font-family;
+  font-weight: 400;
+  line-height: 1.5;
+  background-color: $body-bg;
+  color: $txt-color;
+
+  @include mobile {
+    margin-bottom: 3rem;
+  }
+}
+
+@media (hover: hover) {
+  a:hover {
+    color: $main-color;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+button,
+input {
+  outline: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  width: $width;
+  height: $height;
+}
+
+iframe {
+  border: 0;
+}
