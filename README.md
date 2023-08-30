@@ -11,7 +11,7 @@ Users have the option to view and search for top playing movies and tv shows.
 
 ---
 
-[Movie Hub - Live DEMO]()
+[Movie Hub - Live DEMO](https://movie-hub.netlify.app/)
 
 ## Technologies
 
