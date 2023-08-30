@@ -1,6 +1,6 @@
 import { useFetchContent } from "../../hooks/useFetch";
 import { useParams, useNavigate, useOutletContext } from "react-router-dom";
-import { originalImage, unavailable } from "../../Config/Config";
+import { img_500, originalImage, unavailable } from "../../Config/Config";
 import { BiCalendar } from "react-icons/bi";
 import { FiClock } from "react-icons/fi";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
@@ -18,15 +18,21 @@ const MovieContent = () => {
 
   setIsFooter(false);
 
-  const { content, trailer, rating, isError, isLoading } = useFetchContent(
-    `https://api.themoviedb.org/3/${type}/${id}?api_key=${process.env.REACT_APP_API_KEY}&append_to_response=videos&language=en-US`
-  );
+  const { content, trailer, rating, isError, isLoading, setContent } =
+    useFetchContent(
+      `https://api.themoviedb.org/3/${type}/${id}?api_key=${process.env.REACT_APP_API_KEY}&append_to_response=videos&language=en-US`
+    );
 
   const releaseDate = new Date(content.release_date);
   const movieYear = releaseDate.getFullYear();
 
   const firstAirDate = new Date(content.first_air_date);
   const tvYear = firstAirDate.getFullYear();
+
+  const handleBack = () => {
+    isLoading ? <Loading /> : navigate(-1);
+    setContent("");
+  };
 
   return (
     <>
@@ -44,10 +50,7 @@ const MovieContent = () => {
           {content && (
             <div className="trending__content-modal">
               <div className="arrow_back-btn">
-                <IoArrowBackCircleOutline
-                  size={30}
-                  onClick={() => (isLoading ? <Loading /> : navigate(-1))}
-                />
+                <IoArrowBackCircleOutline size={30} onClick={handleBack} />
               </div>
 
               <div className="trending__content-poster">
@@ -60,7 +63,7 @@ const MovieContent = () => {
                     <img
                       src={
                         content.poster_path
-                          ? originalImage(content.poster_path)
+                          ? img_500(content.poster_path)
                           : unavailable
                       }
                       alt=""

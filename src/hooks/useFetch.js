@@ -61,7 +61,6 @@ export const useFetchContent = (url) => {
       setContent(data);
       setRating(data?.vote_average);
       setTrailer(data.videos.results[0]?.key);
-      console.log(data.videos.results[0]?.key);
     } catch (error) {
       setIsError(true);
       setIsLoading(false);
@@ -83,6 +82,7 @@ export const useFetchContent = (url) => {
     isLoading,
     isOpen,
     setIsOpen,
+    setContent,
   };
 };
 

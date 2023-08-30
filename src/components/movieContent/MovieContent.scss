@@ -11,9 +11,11 @@
   height: auto;
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
 
   @include mobile {
     background-size: contain;
+    background-repeat: repeat;
   }
 
   &::before {
@@ -23,7 +25,7 @@
     right: 0px;
     bottom: 0px;
     left: 0px;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.8);
   }
 
   &-modal {
@@ -41,10 +43,11 @@
     }
 
     .arrow_back-btn {
-      position: absolute;
-      top: 0;
+      position: fixed;
+      top: 100px;
       left: 10px;
       opacity: 0.5;
+      z-index: 10000;
 
       &:hover {
         color: $main-color;
@@ -55,7 +58,7 @@
   }
 
   &-poster {
-    flex: 0 1 40%;
+    flex: 0 1 45%;
     @include flex(center, center);
 
     @include tablet {
@@ -63,10 +66,11 @@
     }
     .image {
       position: relative;
-      width: 400px;
+      width: 350px;
       height: 100%;
       overflow: hidden;
       background: rgba(192, 192, 192, 0.1);
+      box-shadow: 0px 10px 20px 10px rgba(0, 0, 0, 0.3);
 
       @include tablet {
         width: 250px;
@@ -99,7 +103,7 @@
   &-about {
     @include flex(flex-start, center);
     flex-direction: column;
-    flex: 0 1 60%;
+    flex: 0 1 55%;
 
     @include tablet {
       @include flex(center, center);

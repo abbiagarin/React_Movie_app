@@ -5,7 +5,7 @@ export const img_500 = (imgPath) =>
   `https://image.tmdb.org/t/p/w500/${imgPath}`;
 
 export const originalImage = (imgPath) =>
-  `https://image.tmdb.org/t/p/original/${imgPath}`;
+  `https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/${imgPath}`;
 
 // contentModal and singleContent
 export const unavailable =
