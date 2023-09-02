@@ -7,16 +7,11 @@
   left: 0;
   right: 0;
   bottom: 0;
-  max-width: 100%;
-  height: auto;
+  max-width: $width;
+  height: $height;
   background-size: cover;
-  background-position: center;
   background-repeat: no-repeat;
-
-  @include mobile {
-    background-size: contain;
-    background-repeat: repeat;
-  }
+  background-position: center center;
 
   &::before {
     content: "";
@@ -206,5 +201,22 @@
       margin-left: 5px;
       color: $white;
     }
+  }
+}
+
+@media (max-width: 768px) {
+  .trending__content {
+    background-size: cover;
+  }
+}
+
+@media (max-width: 576px) {
+  .trending__content {
+    background-size: contain;
+    background-repeat: repeat;
+  }
+
+  .trending__content::before {
+    background: rgba(0, 0, 0, 0.85);
   }
 }

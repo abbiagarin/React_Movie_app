@@ -21,7 +21,8 @@
   transform: translateX(-50%);
   transition: all 0.5s ease;
   background-size: cover;
-  background-position: center;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 .content {
@@ -56,7 +57,7 @@
       }
       100% {
         visibility: visible;
-        top: 10rem;
+        top: 13rem;
       }
     }
 
@@ -154,6 +155,23 @@
 
 .info-btn:hover {
   color: black;
+}
+
+@media (max-width: 768px) {
+  .slide {
+    background-size: cover;
+  }
+}
+
+@media (max-width: 576px) {
+  .slide {
+    background-size: contain;
+    background-repeat: repeat;
+  }
+
+  .content {
+    background: rgba(0, 0, 0, 0.85);
+  }
 }
 
 // @media only screen and (max-width: 1024px) {

@@ -45,6 +45,7 @@ const MovieContent = () => {
             backgroundImage: `url(${
               content.backdrop_path && originalImage(content.backdrop_path)
             })`,
+            height: "100vh",
           }}
         >
           {content && (
