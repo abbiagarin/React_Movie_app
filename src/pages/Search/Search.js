@@ -181,7 +181,7 @@ const Search = () => {
           <nav className="pagination">
             <ul className="pagination__item">
               <Button
-                sx={{ m: 2 }}
+                sx={{ mx: 2, my: 4 }}
                 onClick={handlePrevPage}
                 disabled={page === 1}
               >
@@ -189,7 +189,7 @@ const Search = () => {
               </Button>
               {page}
               <Button
-                sx={{ m: 2 }}
+                sx={{ mx: 2, my: 4 }}
                 onClick={handleNextPage}
                 disabled={movie.length < 20}
               >
