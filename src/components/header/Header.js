@@ -7,7 +7,7 @@ import "./Header.scss";
 
 const Header = () => {
   const [nav, setNav] = useState(false);
-  const [isFooter, setIsFooter] = useState(false)
+  const [isFooter, setIsFooter] = useState(false);
   const fixedNav = () => {
     if (window.scrollY >= 50) {
       setNav(true);
@@ -27,11 +27,19 @@ const Header = () => {
             </NavLink>
           </div>
           <ul className="header__nav">
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="trending">Trending</NavLink>
-            <NavLink to="movies">Movies</NavLink>
-            <NavLink to="series">TV Shows</NavLink>
-            <NavLink to="search" className="search">
+            <NavLink reloadDocument to="/">
+              Home
+            </NavLink>
+            <NavLink reloadDocument to="trending">
+              Trending
+            </NavLink>
+            <NavLink reloadDocument to="movies">
+              Movies
+            </NavLink>
+            <NavLink reloadDocument to="series">
+              TV Shows
+            </NavLink>
+            <NavLink reloadDocument to="search" className="search">
               <BsSearch />
             </NavLink>
           </ul>

@@ -162,8 +162,12 @@ const Search = () => {
 
       <>
         {isLoading && <Loading />}
-        {!movie.length ? (
-          <h4 style={{ textAlign: "center" }}>No Data Available</h4>
+        {(type === 0 || type === 1) &&
+        !movie.length &&
+        !(searchText.length < 1) ? (
+          <h4 style={{ textAlign: "center" }}>
+            {type ? "Tv" : "Movie"} Data not Available
+          </h4>
         ) : (
           <div className="trending">
             {movie &&

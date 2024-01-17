@@ -103,16 +103,17 @@ export const useFetchSearch = () => {
 
   const fetchSearch = async () => {
     try {
-      const { data } = await axios.get(
+      let { data } = await axios.get(
         `https://api.themoviedb.org/3/search/${type ? "tv" : "movie"}?api_key=${
           process.env.REACT_APP_API_KEY
         }&language=en-US&query=${searchText}&page=${page}&include_adult=false`
       );
+
       setIsFooter(false);
       setIsLoading(false);
       setMovie(data?.results);
+      console.log(data.results);
     } catch (error) {
-      console.log(error);
       setIsLoading(false);
     }
   };
@@ -123,7 +124,7 @@ export const useFetchSearch = () => {
     fetchSearch();
 
     // eslint-disable-next-line
-  }, [page, type]);
+  }, [page, type, searchText]);
 
   return {
     page,
